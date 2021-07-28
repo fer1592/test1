@@ -36,7 +36,7 @@ func TestTest1(t *testing.T) {
 	bucketNameOutput := terraform.Output(t, terraformOptions, "bucket_id")
 	assert.Equal(t, bucketName, bucketNameOutput)
 
-	//
+	//Download the test1.txt file, and validate that the content is a timestamp
 	test1Url := terraform.Output(t, terraformOptions, "test1_url")
 	resp1, err1 := http.Get(test1Url)
 	defer resp1.Body.Close()
@@ -45,6 +45,7 @@ func TestTest1(t *testing.T) {
 	assert.Nil(t, conterr1)
 	assert.Regexp(t, regexp.MustCompile(`[0-9]{2}-[0-9]{2}-[0-9]{4}\s[0-9]{2}:[0-9]{2}:[0-9]{2}\s\+[0-9]{2}:[0-9]{2}`), string(content1))
 
+	//Download the test2.txt file, and validate that the content is a timestamp
 	test2Url := terraform.Output(t, terraformOptions, "test2_url")
 	resp2, err2 := http.Get(test2Url)
 	defer resp2.Body.Close()
