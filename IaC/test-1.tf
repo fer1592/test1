@@ -28,6 +28,7 @@ resource "aws_s3_bucket" "flugel-s3-bucket-test" {
   }
 }
 
+# Create the first text file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-1-txt" {
   bucket  = "${ var.bucketName }"
   key     = "test1.txt"
@@ -36,6 +37,7 @@ resource "aws_s3_bucket_object" "test-1-txt" {
   depends_on = [aws_s3_bucket.flugel-s3-bucket-test]
 }
 
+# Create the second file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-2-txt" {
   bucket  = "${ var.bucketName }"
   key     = "test2.txt"
@@ -44,6 +46,7 @@ resource "aws_s3_bucket_object" "test-2-txt" {
   depends_on = [aws_s3_bucket.flugel-s3-bucket-test]
 }
 
+# Provide the bucket id, and the download urls of both files to validate they are correct with an automated test
 output "bucket_id" {
   value = aws_s3_bucket.flugel-s3-bucket-test.id
 }
