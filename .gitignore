@@ -1,0 +1,4 @@
+IaC/.terraform*
+IaC/terraform.*
+secrets
+test/go.*
