@@ -19,7 +19,7 @@ provider "aws" {
 
 # Create an S3 bucket
 resource "aws_s3_bucket" "flugel-s3-bucket-test" {
-  bucket = "${ var.bucketName }"
+  bucket = var.bucketName
   acl    = "private"
 
   tags = {
@@ -30,18 +30,18 @@ resource "aws_s3_bucket" "flugel-s3-bucket-test" {
 
 # Create the first text file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-1-txt" {
-  bucket  = "${ var.bucketName }"
+  bucket  = var.bucketName
   key     = "test1.txt"
-  content = "${ formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp()) }"
+  content = formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp())
   acl     = "public-read"
   depends_on = [aws_s3_bucket.flugel-s3-bucket-test]
 }
 
 # Create the second file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-2-txt" {
-  bucket  = "${ var.bucketName }"
+  bucket  = var.bucketName
   key     = "test2.txt"
-  content = "${ formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp()) }"
+  content = formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp())
   acl     = "public-read"
   depends_on = [aws_s3_bucket.flugel-s3-bucket-test]
 }
