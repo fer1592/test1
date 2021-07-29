@@ -31,7 +31,7 @@ jobs:
 
   prod-deployment:
     needs: test
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test1-branch' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository under $GITHUB_WORKSPACE
