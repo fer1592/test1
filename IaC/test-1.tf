@@ -1,5 +1,11 @@
 variable "bucketName" {
-  type = string
+  type    = string
+  default = "fjposan-mytest-bucket"
+
+  validation {
+    condition     = length(var.bucketName) > 2 && length(var.bucketName) < 64 && can(regex("^[0-9a-z][0-9a-z-]*[0-9a-z]$",var.bucketName))
+    error_message = "Bucket Name must be between 3 and 63 chars, consist only of lowercase letters, numbers, and hyphens. Bucket names must begin and end with a letter or number."
+  }
 }
 
 # Required Providers
