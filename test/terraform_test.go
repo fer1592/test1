@@ -14,7 +14,7 @@ import (
 
 func TestTest1(t *testing.T) {
 
-	bucketName := fmt.Sprintf("flugel-s3-bucket-test-%d", rand.Int())
+	bucketName := fmt.Sprintf("s3-bucket-test-%d", rand.Int())
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		//Path to our terraform code

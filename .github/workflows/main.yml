@@ -47,6 +47,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
           cd IaC/
+          sed -i 's/^terraform {/&\n  backend "s3" {}/' test-1.tf
           terraform init -reconfigure \
             -backend-config="bucket=${{ secrets.BUCKET }}" \
             -backend-config="key=${{ secrets.KEY }}"
