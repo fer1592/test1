@@ -57,4 +57,4 @@ jobs:
           terraform init -reconfigure \
             -backend-config="bucket=${{ secrets.BUCKET }}" \
             -backend-config="key=${{ secrets.KEY }}"
-          terraform apply -var='bucketName=test-fer0592-bucket' -auto-approve
+          terraform apply -var='bucketName=${{ secrets.BUCKET_NAME }}' -auto-approve
