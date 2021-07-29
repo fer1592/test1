@@ -19,6 +19,9 @@ provider "aws" {
 
 # Create an S3 bucket
 resource "aws_s3_bucket" "flugel-s3-bucket-test" {
+  #ts:skip=AWS.S3Bucket.EncryptionandKeyManagement.High.0405 No sesitive data will be stored in the bucket.
+  #ts:skip=AWS.S3Bucket.IAM.High.0370 No sesitive data will be stored in the bucket.
+  #ts:skip=AWS.S3Bucket.LM.MEDIUM.0078 No sesitive data will be stored in the bucket.
   bucket = var.bucketName
   acl    = "private"
 
@@ -30,6 +33,7 @@ resource "aws_s3_bucket" "flugel-s3-bucket-test" {
 
 # Create the first text file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-1-txt" {
+  #ts:skip=AWS.ASBO.DP.MEDIUM.0034
   bucket  = var.bucketName
   key     = "test1.txt"
   content = formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp())
@@ -39,6 +43,7 @@ resource "aws_s3_bucket_object" "test-1-txt" {
 
 # Create the second file with the timestamp as the content
 resource "aws_s3_bucket_object" "test-2-txt" {
+  #ts:skip=AWS.ASBO.DP.MEDIUM.0034
   bucket  = var.bucketName
   key     = "test2.txt"
   content = formatdate("DD-MM-YYYY hh:mm:ss ZZZZZ",timestamp())
