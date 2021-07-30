@@ -1,4 +1,4 @@
-name: Testing and Deploy Piepeline
+name: Test and Deploy Piepeline
 on:
   push:
   pull_request:

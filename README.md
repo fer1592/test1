@@ -59,6 +59,8 @@ Follow the next steps to test and deploy your resources using GitHub actions:
 | KEY                   | Path where to store your tfstate file (eg prod/terraform.tfstate) |
 | BUCKET_NAME           | Name of the bucket to be deployed                   |
 4. Next, click on the `Actions` tab and click on `I understand my workflows, go ahead and enable them`
-5. Once you enable the workflows, create a pull request or push a small change to trigger the workflow. From now on, the pipeline should test and update your resources everytime you push a change
+5. Once you enable the workflows, create a pull request to merge the changes with your main branch*. From now on, the pipeline should test and update your resources everytime you push a change
 
 Hope you enjoyed running the tests as I did when doing the challenge. Any feedback is appreciated. Thanks!
+
+**A merge conflict will rise while creating the pull request, this is due to an empty workflow was pushed into the main branch directly to enable the workflow created in the feature branch to run*
