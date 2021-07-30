@@ -43,6 +43,7 @@ Following instructions explain how to execute the code manually. You should alre
 
 ## Instructions to run the code using GitHub actions
 You can also test and deploy the resources using GitHub actions. Before moving to the steps to execute the workflow, you will need to create an s3 bucket in AWS.
+
 The bucket must contain a folder where terraform will store the terraform.tfstate file. Otherwise after the workflow completes its execution, the State of your infrastructure will be lost. After you create the bucket, create a folder inside it, where your tfstate file will be stored
 
 Follow the next steps to test and deploy your resources using GitHub actions:
